@@ -14,18 +14,17 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_UP]:    dy = -self.speed
         if keys[pygame.K_DOWN]:  dy = self.speed
 
+        # Перемещаем игрока
         self.rect.move_ip(dx, dy)
 
-        # При выходе за границы экрана — прокрутка фона
         if self.rect.left < 0:
-            bg.scroll(self.speed, 0)
+            bg.scroll(self.speed)
             self.rect.left = 0
         if self.rect.right > 800:
-            bg.scroll(-self.speed, 0)
+            bg.scroll(-self.speed)
             self.rect.right = 800
+            
         if self.rect.top < 0:
-            bg.scroll(0, self.speed)
             self.rect.top = 0
         if self.rect.bottom > 600:
-            bg.scroll(0, -self.speed)
             self.rect.bottom = 600
